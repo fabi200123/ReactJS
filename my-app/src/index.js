@@ -20,24 +20,18 @@ function Square(props){
       ); // () after return so java does not add ; after return and fk our code
     }
   
-    render() {  
+    render() { 
+      const rowCount = 3, colCount = 3;
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {[...new Array(rowCount)].map((x, rowIndex) => {
+            return (
+              <div className="board-row" key={rowIndex}>
+                {[...new Array(colCount)].map((y, colIndex) => this.renderSquare(rowIndex*colCount + colIndex))}
+              </div>
+            )
+          })
+          }
         </div>
       );
     }
@@ -75,7 +69,7 @@ function Square(props){
     jumpTo(step) {
       this.setState({
         stepNumber: step,
-        xIsNext: (step % 2) == 0,
+        xIsNext: (step % 2) === 0,
       });
     }
     
