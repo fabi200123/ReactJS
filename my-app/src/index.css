@@ -49,3 +49,11 @@ body {
     margin-left: 20px;
   }
   
+  .restart {
+    margin-left: 20px;
+    background: rgb(13, 218, 150);
+  }
+
+  .allMoves {
+    visibility: show;
+  }
