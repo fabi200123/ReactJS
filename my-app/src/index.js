@@ -101,6 +101,8 @@ function Square(props){
       }
       else {
         status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
+        if(this.state.stepNumber === 9) //cazul in care nimeni nu castiga
+          status = 'Nobody won!';
       }
 
       return (
@@ -110,6 +112,9 @@ function Square(props){
               squares={current.squares}
               onClick={(i) => this.handleClick(i)}
             />
+          </div>
+          <div>
+            <button className='restart' onClick={() => window.location.reload()}>Restart</button>
           </div>
           <div className="game-info">
             <div>{status}</div>
